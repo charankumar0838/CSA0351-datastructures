@@ -1,0 +1,68 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+struct Node *head = NULL;
+
+void push(int val)
+{
+    struct Node *newNode = malloc(sizeof(struct Node));
+    newNode->data = val;
+
+  
+    newNode->next = head;
+    head = newNode;
+}
+
+void pop()
+{
+    
+    struct Node *temp;
+
+    if(head == NULL)
+        printf("Stack is Empty\n");
+    else
+    {
+        printf("Poped element = %d\n", head->data);
+
+        temp = head;
+
+  
+        head = head->next;
+
+        //free the poped element's memory
+        free(temp);
+    }
+}
+void display()
+{
+    struct Node *temp = head
+    while(temp != NULL)
+    {
+         printf("%d->", temp->data);
+         temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main()
+{
+    push(10);
+    push(20);
+    push(30);
+    printf("Linked List\n");
+    display();
+    pop();
+    printf("After the pop, the new linked list\n");
+    display();
+    pop();
+    printf("After the pop, the new linked list\n");
+    display();
+
+    return 0;
+}
